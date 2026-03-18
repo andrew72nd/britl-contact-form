@@ -1,19 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <style>
-        body { font-family: sans-serif; background: transparent; padding: 20px; }
-        input, textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        button { background-color: #333; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; }
-        button:hover { background-color: #555; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #0f172a; /* Deep space blue */
+            color: #f1f5f9;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        form {
+            width: 100%;
+            max-width: 500px;
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255, 230, 100, 0.1); /* Soft moon glow */
+            border: 1px solid #334155;
+        }
+        h2 { color: #fde047; margin-top: 0; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: #94a3b8; }
+        input, textarea, select { 
+            width: 100%; 
+            padding: 12px; 
+            margin-bottom: 20px; 
+            border: 1px solid #334155; 
+            border-radius: 6px; 
+            background: #0f172a;
+            color: white;
+            box-sizing: border-box; 
+        }
+        input:focus, textarea:focus { border-color: #fde047; outline: none; box-shadow: 0 0 5px rgba(253, 224, 71, 0.5); }
+        button { 
+            background-color: #fde047; 
+            color: #0f172a; 
+            border: none; 
+            padding: 14px 25px; 
+            cursor: pointer; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            width: 100%;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        button:hover { background-color: #facc15; transform: translateY(-2px); }
     </style>
 </head>
 <body>
+
     <form action="https://formspree.io/f/xdawyjyp" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="_replyto" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Tell me about your project..." rows="5" required></textarea>
-        <button type="submit">Send Message</button>
+        <h2>Launch a Project</h2>
+        
+        <label>Full Name</label>
+        <input type="text" name="name" placeholder="E.g. Neil Armstrong" required>
+
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="name@example.com" required>
+
+        <label>Inquiry Type</label>
+        <select name="inquiry_type">
+            <option value="custom_moon_lamp">Custom Moon Lamp</option>
+            <option value="lithophane_request">Other Lithophane Project</option>
+            <option value="3d_printing_general">General 3D Printing Quote</option>
+            <option value="collaboration">Collaboration / Media</option>
+        </select>
+
+        <label>Desired Completion Date</label>
+        <input type="date" name="deadline">
+
+        <label>Tell me about your idea</label>
+        <textarea name="message" rows="5" placeholder="Dimensions, material preferences, or special requests..." required></textarea>
+
+        <input type="hidden" name="_subject" value="New Portfolio Inquiry!">
+
+        <button type="submit">Send Inquiry</button>
     </form>
+
 </body>
 </html>
