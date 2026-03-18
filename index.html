@@ -2,55 +2,119 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
     <style>
+        /* Base Styling: Clean, Light, Professional */
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #0f172a; /* Deep space blue */
-            color: #f1f5f9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            background-color: transparent; /* Allows form to blend into Google Site */
+            color: #333;
+            margin: 0;
             padding: 20px;
             display: flex;
             justify-content: center;
         }
+
         form {
             width: 100%;
-            max-width: 500px;
-            background: #1e293b;
-            padding: 30px;
+            max-width: 550px;
+            background: #ffffff;
+            padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 0 20px rgba(255, 230, 100, 0.1); /* Soft moon glow */
-            border: 1px solid #334155;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Very subtle shadow for definition */
+            border: 1px solid #e2e8f0; /* Simple border */
+            box-sizing: border-box;
         }
-        h2 { color: #fde047; margin-top: 0; }
-        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: #94a3b8; }
+
+        h2 { 
+            color: #1e6c92; /* Your Accent Blue */ 
+            margin-top: 0; 
+            margin-bottom: 30px; 
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        label { 
+            display: block; 
+            margin-bottom: 8px; 
+            font-weight: 600; 
+            font-size: 0.95rem; 
+            color: #555; 
+        }
+
         input, textarea, select { 
             width: 100%; 
-            padding: 12px; 
-            margin-bottom: 20px; 
-            border: 1px solid #334155; 
+            padding: 12px 15px; 
+            margin-bottom: 25px; 
+            border: 1px solid #cbd5e1; 
             border-radius: 6px; 
-            background: #0f172a;
-            color: white;
+            background: #f8fafc; /* Very light cool-gray fill */
+            color: #1a1a1a;
             box-sizing: border-box; 
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
-        input:focus, textarea:focus { border-color: #fde047; outline: none; box-shadow: 0 0 5px rgba(253, 224, 71, 0.5); }
+
+        input:focus, textarea:focus, select:focus { 
+            border-color: #1e6c92; /* Blue accent focus */
+            outline: none; 
+            box-shadow: 0 0 0 3px rgba(30, 108, 146, 0.15); /* Soft blue halo */
+        }
+
+        /* Submit Button Styling */
         button { 
-            background-color: #fde047; 
-            color: #0f172a; 
+            background-color: #1e6c92; /* Blue primary */
+            color: #ffffff; 
             border: none; 
-            padding: 14px 25px; 
+            padding: 15px 25px; 
             cursor: pointer; 
             border-radius: 6px; 
-            font-weight: bold; 
+            font-weight: 700; 
+            font-size: 1.05rem;
             width: 100%;
-            transition: transform 0.2s, background-color 0.2s;
+            transition: background-color 0.2s, transform 0.1s;
         }
-        button:hover { background-color: #facc15; transform: translateY(-2px); }
+
+        button:hover { background-color: #175a7c; /* Darker blue hover */ }
+        button:active { transform: scale(0.98); }
+
+        /* --- MOBILE RESPONSIVENESS (Media Query) --- */
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            
+            form { 
+                padding: 25px; /* Reduced padding inside the form */
+                border-radius: 8px;
+            }
+
+            h2 { 
+                font-size: 1.35rem; /* Shrink the title */
+                margin-bottom: 20px;
+            }
+
+            label { 
+                font-size: 0.85rem; /* Slightly smaller labels */
+                margin-bottom: 6px;
+            }
+
+            input, textarea, select { 
+                font-size: 0.95rem; /* Slightly smaller input text */
+                padding: 10px;
+                margin-bottom: 18px; /* Less spacing */
+            }
+            
+            button {
+                font-size: 1rem;
+                padding: 13px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <form action="https://formspree.io/f/xdawyjyp" method="POST">
-        <h2>Launch a Project</h2>
+    <form action="https://formspree.io/f/{your-form-id}" method="POST">
+        <h2>Start a Conversation</h2>
         
         <label>Full Name</label>
         <input type="text" name="name" placeholder="E.g. Neil Armstrong" required>
@@ -58,23 +122,25 @@
         <label>Email Address</label>
         <input type="email" name="email" placeholder="name@example.com" required>
 
-        <label>Inquiry Type</label>
-        <select name="inquiry_type">
-            <option value="custom_moon_lamp">Custom Moon Lamp</option>
-            <option value="lithophane_request">Other Lithophane Project</option>
-            <option value="3d_printing_general">General 3D Printing Quote</option>
-            <option value="collaboration">Collaboration / Media</option>
+        <label>Phone Number (Optional)</label>
+        <input type="tel" name="phone" placeholder="(123) 456-7890">
+
+        <label>Project Interest</label>
+        <select name="project_type" required>
+            <option value="" disabled selected>Select an option...</option>
+            <option value="photography">Photography</option>
+            <option value="3d_printing">3D Printing / Fabrication</option>
+            <option value="custom_design">Custom Design</option>
+            <option value="collaboration">Collaboration / Joint Project</option>
+            <option value="other">Other Inquiry</option>
         </select>
 
-        <label>Desired Completion Date</label>
-        <input type="date" name="deadline">
+        <label>Project Details / Message</label>
+        <textarea name="message" rows="6" placeholder="Tell me about your vision or idea..." required></textarea>
 
-        <label>Tell me about your idea</label>
-        <textarea name="message" rows="5" placeholder="Dimensions, material preferences, or special requests..." required></textarea>
+        <input type="hidden" name="_subject" value="New Inquiry from Portfolio Site">
 
-        <input type="hidden" name="_subject" value="New Portfolio Inquiry!">
-
-        <button type="submit">Send Inquiry</button>
+        <button type="submit">Submit Project Inquiry</button>
     </form>
 
 </body>
